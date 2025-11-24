@@ -1,2 +1,2 @@
 # holbertonschool-printf
-![Diagramme du Printf](DiagrammeREADME.png)
+![Diagramme du Printf](image/DiagrammeREADME.png)
