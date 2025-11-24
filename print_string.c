@@ -12,6 +12,7 @@
  * character by character using _putchar. If the string is NULL,
  * it prints "(null)" instead.
  */
+
 int print_string(va_list args)
 {
 	int index;
