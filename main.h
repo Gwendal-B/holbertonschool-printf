@@ -10,4 +10,19 @@ int _printf(const char *format, ...);
 int print_string(va_list args);
 int print_percent(va_list args);
 
+/**
+ * struct format_specifier - associates a format character with a function
+ *
+ * @spec: the format specifier character, e.g., 'c', 's', '%'
+ * @f: pointer to the function that handles this format
+ */
+typedef struct format_specifier
+{
+	char spec;
+	int (*f)(va_list);
+} format_specifier;
+
+/* Function prototype to convert the format string */
+int convertion(const char *format, format_specifier checker[], va_list parameter);
+
 #endif /*MAIN_H*/
