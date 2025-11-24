@@ -110,4 +110,11 @@ man ./man_3_printf
 # 👥 Authors
 Georgia Boulnois Gwendal Boisard and Fabien Cousinat Holberton, Actual Digital School
 # holbertonschool-printf
-![Diagramme du Printf](image/Diagramme.png)
+Description :
+Commande de compil
+Requirements
+Exemple
+Man Page
+Testing
+![Diagramme du Printf](image/Diagramme(1).png)
+Autres info utile
