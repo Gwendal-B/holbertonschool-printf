@@ -109,13 +109,5 @@ man ./man_3_printf
 ```
 # 👥 Authors
 Georgia Boulnois Gwendal Boisard and Fabien Cousinat Holberton, Actual Digital School
-
-# holbertonschool-printf
-Description :
-Commande de compil : gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format main.c
-Requirements
-Exemple
-Man Page
-Testing
 ![Diagramme du Printf](image/Diagramme.png)
 main
