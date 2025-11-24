@@ -11,7 +11,6 @@
  * This function is used in a custom _printf implementation to handle
  * the '%%' format specifier. The va_list parameter is not used.
  */
-
 int print_percent(va_list args)
 {
 	(void)args;
