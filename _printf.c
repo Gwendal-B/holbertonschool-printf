@@ -1,41 +1,39 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
-* _printf - produces output according to a format
-* @format: the format string containing characters and format specifiers
-*
-* Return: the number of characters printed, or -1 on error
-*/
+ * _printf - reproduit le comportement de printf
+ * @format: chaîne contenant du texte + formats
+ *
+ * Return: nombre de caractères a imprimer
+ */
 int _printf(const char *format, ...)
 {
-	int count;
-
 	va_list args;
+	int i = 0, count = 0;
 
-	/* Vérifie que format n'est pas NULL */
-	if (format == NULL)
+	if (!format)
 		return (-1);
 
-	/* Tableau des spécificateurs et fonctions correspondantes */
-	format_specifier checker[] = {
-		{'c', print_char},
-		{'s', print_string},
-		{'%', print_percent},
-		{'i', print_all_base},
-		{'d', print_base_ten},
-		{'\0', NULL}
-	};
-
-	/* Initialisation des arguments variables */
 	va_start(args, format);
 
-	/* Appel à handle_format pour gérer l'affichage */
-	count = handle_format(format, checker, args);
-
-	/* Libération de la liste d'arguments */
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (format[i] == 'c')
+				count += print_char(args);
+			else if (format[i] == 's')
+				count += print_string(args);
+			else if (format[i] == '%')
+				count += print_percent();
+			else
+				return (-1);
+		}
+		else
+			count += _putchar(format[i]);
+			i++;
+	}
 	va_end(args);
-
-	/* Retourne le nombre de caractères imprimés */
 	return (count);
 }
