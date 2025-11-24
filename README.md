@@ -5,5 +5,5 @@ Requirements
 Exemple
 Man Page
 Testing
-![Diagramme du Printf](image/Diagramme(1).png)
+![Diagramme du Printf](image/Diagramme.png)
 Autres info utile
