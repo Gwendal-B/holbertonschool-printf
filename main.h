@@ -7,5 +7,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int print_string(va_list args);
+int print_percent(va_list args);
 
 #endif /*MAIN_H*/
