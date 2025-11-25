@@ -6,10 +6,17 @@
  *
  * Return: nombre de caractères a imprimer
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int i = 0, count = 0;
+	int i = 0, j, count = 0;
+
+	spec_t funcs[] = {
+		{'c', print_char}, {'s', print_string},
+		{'d', print_int},  {'i', print_int},
+		{'%', print_percent}, {'\0', NULL}
+	};
 
 	if (!format)
 		return (-1);
@@ -21,20 +28,23 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			if (format[i] == 'c')
-				count += print_char(args);
-			else if (format[i] == 's')
-				count += print_string(args);
-			else if (format[i] == '%')
-				count += print_percent();
-			else if (format[i] == 'd' || format[i] == 'i')
-				count += print_int(args);
-			else
-				return (-1);
+			if (!format[i])
+				return (va_end(args), -1);
+
+			for (j = 0; funcs[j].spec; j++)
+			{
+				if (format[i] == funcs[j].spec)
+				{
+					count += funcs[j].f(args);
+					break;
+				}
+			}
+			if (!funcs[j].spec)
+				count += _putchar('%') + _putchar(format[i]);
 		}
 		else
 			count += _putchar(format[i]);
-			i++;
+		i++;
 	}
 	va_end(args);
 	return (count);
