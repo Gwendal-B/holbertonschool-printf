@@ -97,7 +97,7 @@ To open it:
 ```
 man ./man_3_printf
 ```
-# Flowchart
+# 🧩 Flowchart
 ![Diagramme du Printf](image/Diagramme.png)
 
 # 📁 Project Structure (optional section)
