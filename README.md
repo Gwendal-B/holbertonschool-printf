@@ -97,6 +97,9 @@ To open it:
 ```
 man ./man_3_printf
 ```
+# Flowchart
+![Diagramme du Printf](image/Diagramme.png)
+
 # 📁 Project Structure (optional section)
 ```
 ├── _printf.c
@@ -109,5 +112,4 @@ man ./man_3_printf
 ```
 # 👥 Authors
 Georgia Boulnois, Gwendal Boisard and Fabien Cousin at Holberton, Actual Digital School
-![Diagramme du Printf](image/Diagramme.png)
 
