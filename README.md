@@ -19,7 +19,7 @@ It is designed as an educational deep-dive into how formatted output works under
 
 The code have been compiled with the command 
 ```c
-$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format _printf
+$ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 ```
 
 # 📋 Requirements
