@@ -112,4 +112,3 @@ man ./man_3_printf
 ```
 # 👥 Authors
 Georgia Boulnois, Gwendal Boisard and Fabien Cousin at Holberton, Actual Digital School.
-
