@@ -7,10 +7,6 @@
  * @args: va_list containing the string to print
  *
  * Return: the number of characters printed
- *
- * This function retrieves a string from the va_list and prints it
- * character by character using _putchar. If the string is NULL,
- * it prints "(null)" instead.
  */
 int print_string(va_list args)
 {
@@ -18,10 +14,12 @@ int print_string(va_list args)
 	char *s = va_arg(args, char *);
 
 	if (s == NULL)
- 		s = "(null)";
+		s = "(null)";
 
 	for (index = 0; s[index] != '\0'; index++)
+	{
 		_putchar(s[index]);
+	}
 
 	return (index);
 }
