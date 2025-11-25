@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * print_percent - prints the '%' character
