@@ -1,51 +1,41 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
- * _printf - reproduit le comportement de printf
- * @format: chaîne contenant du texte + formats
- *
- * Return: nombre de caractères a imprimer
- */
-
+* _printf - produces output according to a format
+* @format: the format string containing characters and format specifiers
+*
+* Return: the number of characters printed, or -1 on error
+*/
 int _printf(const char *format, ...)
 {
+	int count;
+
 	va_list args;
-	int i = 0, j, count = 0;
 
-	spec_t funcs[] = {
-		{'c', print_char}, {'s', print_string},
-		{'d', print_int},  {'i', print_int},
-		{'%', print_percent}, {'\0', NULL}
-	};
-
-	if (!format)
+	/* Vérifie que format n'est pas NULL */
+	if (format == NULL)
 		return (-1);
 
+	/* Tableau des spécificateurs et fonctions correspondantes */
+	format_specifier checker[] = {
+		{'c', print_char},
+		{'s', print_string},
+		{'%', print_percent},
+		{'i', print_all_base},
+		{'d', print_base_ten},
+		{'\0', NULL}
+	};
+
+	/* Initialisation des arguments variables */
 	va_start(args, format);
 
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			if (!format[i])
-				return (va_end(args), -1);
+	/* Appel à handle_format pour gérer l'affichage */
+	count = handle_format(format, checker, args);
 
-			for (j = 0; funcs[j].spec; j++)
-			{
-				if (format[i] == funcs[j].spec)
-				{
-					count += funcs[j].f(args);
-					break;
-				}
-			}
-			if (!funcs[j].spec)
-				count += _putchar('%') + _putchar(format[i]);
-		}
-		else
-			count += _putchar(format[i]);
-		i++;
-	}
+	/* Libération de la liste d'arguments */
 	va_end(args);
+
+	/* Retourne le nombre de caractères imprimés */
 	return (count);
 }
