@@ -1,12 +1,11 @@
 #include "main.h"
 
 /**
- * _printf - reproduit le comportement de printf
- * @format: chaîne contenant du texte + formats
+ * _printf - replicates the behavior of printf
+ * @format: string containing text and format specifiers
  *
- * Return: nombre de caractères a imprimer
+ * Return: number of characters printed
  */
-
 int _printf(const char *format, ...)
 {
 	va_list args;
