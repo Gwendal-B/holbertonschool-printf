@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * print_string - prints a string
@@ -18,7 +16,7 @@ int print_string(va_list args)
 	char *s = va_arg(args, char *);
 
 	if (s == NULL)
- 		s = "(null)";
+		s = "(nil)";
 
 	for (index = 0; s[index] != '\0'; index++)
 		_putchar(s[index]);

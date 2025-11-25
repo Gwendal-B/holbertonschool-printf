@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "main.h"
-#include <stdarg.h>
 
 /**
  * print_percent - prints the '%' character
@@ -16,6 +14,6 @@ int print_percent(va_list args)
 	(void)args;
 
 	_putchar('%');
-	
+
 	return (1);
 }
