@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 
   va_start(args, format);
 
-  count = convertion(format, checker, args);
+  count = handle_format(format, checker, args);
   
   va_end(args);
 
