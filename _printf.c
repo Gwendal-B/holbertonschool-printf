@@ -1,0 +1,51 @@
+#include "main.h"
+
+/**
+ * _printf - reproduit le comportement de printf
+ * @format: chaîne contenant du texte + formats
+ *
+ * Return: nombre de caractères a imprimer
+ */
+
+int _printf(const char *format, ...)
+{
+	va_list args;
+	int i = 0, j, count = 0;
+
+	spec_t funcs[] = {
+		{'c', print_char}, {'s', print_string},
+		{'d', print_int},  {'i', print_int},
+		{'%', print_percent}, {'\0', NULL}
+	};
+
+	if (!format)
+		return (-1);
+
+	va_start(args, format);
+
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			i++;
+			if (!format[i])
+				return (va_end(args), -1);
+
+			for (j = 0; funcs[j].spec; j++)
+			{
+				if (format[i] == funcs[j].spec)
+				{
+					count += funcs[j].f(args);
+					break;
+				}
+			}
+			if (!funcs[j].spec)
+				count += _putchar('%') + _putchar(format[i]);
+		}
+		else
+			count += _putchar(format[i]);
+		i++;
+	}
+	va_end(args);
+	return (count);
+}
