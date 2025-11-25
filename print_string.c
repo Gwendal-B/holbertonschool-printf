@@ -3,19 +3,25 @@
 #include <stdarg.h>
 
 /**
- * print_percent - prints the '%' character
- * @args: unused parameter (required for prototype compatibility)
+ * print_string - prints a string
+ * @args: va_list containing the string to print
  *
- * Return: 1 (the number of characters printed)
+ * Return: the number of characters printed
  *
- * This function is used in a custom _printf implementation to handle
- * the '%%' format specifier. The va_list parameter is not used.
+ * This function retrieves a string from the va_list and prints it
+ * character by character using _putchar. If the string is NULL,
+ * it prints "(null)" instead.
  */
-int print_percent(va_list args)
+int print_string(va_list args)
 {
-	(void)args;
+	int index;
+	char *s = va_arg(args, char *);
 
-	_putchar('%');
-	
-	return (1);
+	if (s == NULL)
+ 		s = "(null)";
+
+	for (index = 0; s[index] != '\0'; index++)
+		_putchar(s[index]);
+
+	return (index);
 }
