@@ -8,7 +8,7 @@
 *
 * @args: Variable list of arguments
 *
-* Return : Always 0
+* Return : Always 1
 */
 
 int print_char(va_list args)
@@ -16,5 +16,5 @@ int print_char(va_list args)
 	char c = va_arg(args, int);
 
 	_putchar(c);
-	return (0);
+	return 1;
 }
