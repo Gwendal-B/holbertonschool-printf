@@ -18,5 +18,5 @@ int print_int(va_list args)
 
 	num = va_arg(args, int);
 	write_int(num);
-	return (1);
+	return (num);
 }
