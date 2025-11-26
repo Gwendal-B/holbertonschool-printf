@@ -14,9 +14,9 @@
 
 int print_int(va_list args)
 {
-	int num;
+	int num = va_arg(args, int);
+	int len = 0;
 
-	num = va_arg(args, int);
-	write_int(num);
-	return (num);
+	len = write_int(num);
+	return (len);
 }

@@ -8,10 +8,10 @@
 *
 * @n: integer to print
 *
-* Return: no value (void)
+* Return: length of
 */
 
-void write_int(int n)
+int write_int(int n)
 {
 	char digit;
 
@@ -19,20 +19,22 @@ void write_int(int n)
 	if (n == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return;
+		return (11);
 	}
 
 	if (n < 0)
 	{
 		write(1, "-", 1);
+		len++;
 		n = -n;
 	}
 
 	if (n >= 10)
-		write_int(n / 10);
+		len += write_int(n / 10);
 
 	digit = (n % 10) + '0';
-
 	write(1, &digit, 1);
+	len++;
 
+	return (len);
 }
