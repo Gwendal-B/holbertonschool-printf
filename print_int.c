@@ -9,26 +9,15 @@
 *
 * @args: list of variables to print
 *
-* @count: integer, amount of integers to print
-*
-* Return: 0 if working, -1 if error
+* Return: 1 if working, -1 if error
 */
 
 int print_int(va_list args)
 {
-	int count = va_arg(args, int);
 	int i;
 	int num;
 
-	if (count <= 0)
-	{
-		return (-1);
-	}
-
-	for (i = 0; i < count; i++)
-	{
-		num = va_arg(args, int);
-		write_int(num);
-	}
-	return (0);
+	num = va_arg(args, int);
+	write_int(num);
+	return (1);
 }
