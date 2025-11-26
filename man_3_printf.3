@@ -1,0 +1,76 @@
+.\" Manpage for _printf
+.TH _PRINTF 3 "25 Nov 2025" "Version 1.0" "Custom C library"
+.SH NAME
+_printf \- prints formatted output to standard output
+
+.SH SYNOPSIS
+.B "#include \"main.h\""
+.br
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The
+.B _printf
+function partially replicates the behavior of the standard
+.B printf
+function.
+It prints a string of characters to standard output, supporting a limited set of format specifiers.
+
+The supported format specifiers are:
+
+.TP
+.B "%c"
+Prints a single character.
+.TP
+.B "%s"
+Prints a string of characters.
+.TP
+.B "%d"
+Prints a signed decimal integer.
+.TP
+.B "%i"
+Prints a signed decimal integer.
+.TP
+.B "%%"
+Prints the percent character '%'.
+
+All other characters in the
+.B format
+string are printed as-is.
+
+.SH PARAMETERS
+.IP format
+A string containing text to print and format specifiers.
+.IP ...
+Arguments corresponding to the format specifiers in the format string.
+
+.SH RETURN VALUE
+Returns the total number of characters printed to standard output.
+
+.SH ERRORS
+If an unsupported format specifier is encountered, the function prints '%' followed by the unknown character.
+If
+.B format
+is
+.RI NULL ,
+the behavior is undefined.
+
+.SH EXAMPLES
+.nf
+_printf("Char: %c, Name: %s, Number: %d, %%\n", 'A', "Alice", 42);
+.nf
+This prints:
+.Carriage Return
+Char: A, Name: Alice, Number: 42, %
+.fi
+
+.SH NOTES
+- Internal helper functions used include
+.B print_char,
+.B print_string,
+.B print_int,
+and
+.B print_percent.
+- Characters are printed one by one using
+.B _putchar.
+- Only the listed format specifiers are supported.
