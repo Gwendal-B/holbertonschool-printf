@@ -25,6 +25,8 @@ int print_string(va_list args);
 int print_int(va_list args);
 int print_percent(va_list args);
 int print_octal(va_list args);
+int print_hex_lower(va_list args);
+int print_hex_upper(va_list args);
 int write_int(int n);
 
 #endif

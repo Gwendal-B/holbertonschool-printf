@@ -12,9 +12,9 @@ int _printf(const char *format, ...)
 	int i = 0, j, count = 0;
 
 	spec_t funcs[] = {
-		{'c', print_char}, {'s', print_string},
+		{'c', print_char}, {'s', print_string}, {'X', print_hex_upper},
 		{'d', print_int}, {'i', print_int}, {'o', print_octal},
-		{'%', print_percent}, {'\0', NULL}
+		{'%', print_percent}, {'x', print_hex_lower}, {'\0', NULL}
 	};
 
 	if (!format)
