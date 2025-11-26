@@ -13,7 +13,7 @@
 
 int write_int(int n)
 {
-	int len;
+	int len = 0;
 	char digit;
 
 	/* Edge case : minimum int value, risk of overflow */
