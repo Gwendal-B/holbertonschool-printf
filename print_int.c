@@ -14,8 +14,9 @@
 * Return: 0 if working, -1 if error
 */
 
-int print_int(va_list args, int count)
+int print_int(va_list args)
 {
+	int count = va_arg(args, int);
 	int i;
 	int num;
 
