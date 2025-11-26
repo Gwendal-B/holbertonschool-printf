@@ -14,7 +14,6 @@
 
 int print_int(va_list args)
 {
-	int i;
 	int num;
 
 	num = va_arg(args, int);
