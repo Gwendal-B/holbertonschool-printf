@@ -6,9 +6,9 @@
 #include <unistd.h>
 
 /**
- * struct spec - correspondance entre un format et une fonction
- * @spec: le caractère du format (ex : 'c', 's', 'd')
- * @f: pointeur vers la fonction associée
+ * struct spec - mapping between a format specifier and its handler function
+ * @spec: the format character (e.g. 'c', 's', 'd')
+ * @f: pointer to the associated function
  */
 typedef struct spec
 {

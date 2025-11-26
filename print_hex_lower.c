@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * print_octal - prints a number in octal base
+ * print_hex_lower - prints an unsigned int in lowercase hexadecimal
  * @args: list of arguments
- *
  * Return: number of characters printed
  */
-int print_octal(va_list args)
+int print_hex_lower(va_list args)
 {
 	unsigned int n = va_arg(args, unsigned int);
 	char buffer[12];
+	char *hex = "0123456789abcdef";
 	int i = 0, len = 0;
 
 	if (n == 0)
@@ -17,13 +17,15 @@ int print_octal(va_list args)
 
 	while (n > 0)
 	{
-		buffer[i++] = (n % 8) + '0';
-		n /= 8;
+		buffer[i++] = hex[n % 16];
+		n /= 16;
 	}
+
 	while (i--)
 	{
 		_putchar(buffer[i]);
 		len++;
 	}
+
 	return (len);
 }
