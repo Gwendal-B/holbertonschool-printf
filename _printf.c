@@ -13,24 +13,33 @@ int _printf(const char *format, ...)
 
 	spec_t funcs[] = {
 		{'c', print_char}, {'s', print_string},
-		{'d', print_int},  {'i', print_int},
-		{'%', print_percent}, {'\0', NULL}
+		{'p', print_pointer}, {'d', print_int},
+		{'i', print_int}, {'o', print_octal},
+		{'x', print_hex_lower}, {'X', print_hex_upper},
+		{'u', print_unsigned}, {'%', print_percent},
+		{'\0', NULL}
 	};
 
-	if (!format)
+	if (format == NULL)
 		return (-1);
 
 	va_start(args, format);
 
-	while (format[i])
+	while (format[i] != '\0')
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			if (!format[i])
-				return (va_end(args), -1);
 
-			for (j = 0; funcs[j].spec; j++)
+			/* ERROR FIX: % alone → invalid */
+			if (format[i] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+
+			/* Search specifier */
+			for (j = 0; funcs[j].spec != '\0'; j++)
 			{
 				if (format[i] == funcs[j].spec)
 				{
@@ -38,13 +47,21 @@ int _printf(const char *format, ...)
 					break;
 				}
 			}
-			if (!funcs[j].spec)
-				count += _putchar('%') + _putchar(format[i]);
+
+			/* Unknown specifier: print % + char */
+			if (funcs[j].spec == '\0')
+			{
+				count += _putchar('%');
+				count += _putchar(format[i]);
+			}
 		}
 		else
+		{
 			count += _putchar(format[i]);
+		}
 		i++;
 	}
+
 	va_end(args);
 	return (count);
 }
