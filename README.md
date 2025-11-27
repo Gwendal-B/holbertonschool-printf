@@ -137,5 +137,5 @@ man ./man_3_printf
 
 ```
 # 👥 Authors
-Georgia Boulnois - Gwendal Boisard - Fabien Cousin
-Holberton / Actual Digital School
+* Georgia Boulnois - Gwendal Boisard - Fabien Cousin
+* Holberton / Actual Digital School
