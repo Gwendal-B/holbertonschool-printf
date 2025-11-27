@@ -1,5 +1,5 @@
 .\" Manpage for _printf
-.TH _PRINTF 3 "25 Nov 2025" "Version 1.0" "Custom C library"
+.TH _PRINTF 3 "27 Nov 2025" "Version 1.1" "Custom C library"
 .SH NAME
 _printf \- prints formatted output to standard output
 
@@ -33,6 +33,20 @@ Prints a signed decimal integer.
 .TP
 .B "%%"
 Prints the percent character '%'.
+.B "%x"
+Prints an unsigned integer in lowercase hexadecimal (base 16).
+.TP
+.B "%X"
+Prints an unsigned integer in uppercase hexadecimal (base 16).
+.TP
+.B "%u"
+Prints an unsigned decimal integer.
+.TP
+.B "%o"
+Prints an unsigned integer in octal (base 8).
+.TP
+.B "%p"
+Prints a pointer address in hexadecimal format, typically prefixed with "0x".
 
 All other characters in the
 .B format
@@ -40,7 +54,7 @@ string are printed as-is.
 
 .SH PARAMETERS
 .IP format
-A string containing text to print and format specifiers.
+A string containing the text to print, including optional format specifiers.
 .IP ...
 Arguments corresponding to the format specifiers in the format string.
 
@@ -57,20 +71,24 @@ the behavior is undefined.
 
 .SH EXAMPLES
 .nf
-_printf("Char: %c, Name: %s, Number: %d, %%\n", 'A', "Alice", 42);
+_printf("Char: %c, Name: %s, Dec: %d, Hex: %x, Oct: %o, Ptr: %p, %%\n", 'E', "Daniel", 63, 255, 255, &format);
 .nf
-This prints:
-.Carriage Return
-Char: A, Name: Alice, Number: 42, %
+Outputs something like:
+Char: E, Name: Daniel, Dec: 63q, Hex: ff, Oct: 377, Ptr: 0x7ffee4c2a8f0, %
 .fi
 
 .SH NOTES
-- Internal helper functions used include
+- Internal helper functions typically include
 .B print_char,
 .B print_string,
 .B print_int,
+.B print_unsigned,
+.B print_hex,
+.B print_octal
 and
-.B print_percent.
-- Characters are printed one by one using
+.B print_pointer.
+.br
+- Characters are printed one at a time using
 .B _putchar.
-- Only the listed format specifiers are supported.
+.br
+- Only the conversion specifiers listed above are supported.
