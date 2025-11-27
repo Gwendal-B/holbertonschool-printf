@@ -3,58 +3,61 @@
 A custom re-implementation of the standard C printf function, developed as part of the Holberton School Low-Level Programming curriculum.
 
 # ✨ Description
-**_printf** is a fully custom version of the C standard printf.
-It prints formatted output to stdout using only the low-level system call write(), avoiding the standard I/O library.
+**_printf** is a fully custom version of the standard C printf.
+It prints formatted output to stdout using only the low-level system call write(), without relying on the standard I/O library.
 
-* This project explores:
+This project explores:
 * Parsing format strings
 * Handling variadic arguments (va_list)
-* Implementing number → string conversion
+* Converting numbers to strings
 * Building a minimal formatting engine in C
 * Reproducing core behaviors of printf
 
-It is designed as an educational deep-dive into how formatted output works under the hood.
+The goal is to understand how formatted output works internally.
 
 # 🛠️ Compilation
 
-The code have been compiled with the command 
+The project must be compiled with :
 ```c
 $ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 ```
 
 # 📋 Requirements
-This project follows the standard Holberton C project constraints, including:
+This project follows the standard Holberton C project requirements:
 
 - Developed and tested on **Ubuntu 20.04 LTS**
 
-- Compiled with **GCC** and strict flags (-Wall -Werror -Wextra -pedantic -std=gnu89)
+- Compiled with **GCC** and strict flags
 
 - Git-based version control with meaningful commits
 
-- Code written following the **Betty coding style**
+- **Betty coding style**
 
-- No use of global variables
+- No global variables
 
-- Maximum **5 functions per .c** file
+- Maximum **5 functions per file**
 
-- All prototypes stored in **main.h** (with include guards)
+- All prototypes sinside **main.h** (with include guards)
 
-- A complete **README** at project root
+- A complete **README.md** at project root
 
 # 📦 Supported Format Specifiers
 
-| Specifier | Meaning                 |
-|----------|--------------------------|
-| `%c`     | Print a single character |
-| `%s`     | Print a string           |
-| `%%`     | Print the % symbol       |
-| `%d`     | Print a signed integer   |
-| `%i`     | Same as `%d`             |
+| Specifier| Meaning                                     |
+|----------|---------------------------------------------|
+| `%c`     | Print a single character                    |
+| `%s`     | Print a string                              |
+| `%%`     | Print the % symbol                          |
+| `%d`     | Print a signed integer                      |
+| `%i`     | Same as `%d`                                |
+| `%u`     | Print an unsigned integer                   |
+| `%o`     | Print an unsigned integer in octal          |
+| `%x`     | Print an unsigned integer in lowercase hex  |
+| `%X`     | Print an unsigned integer in uppercase hex  |
+| `%p`     | Print a pointer address|
 
-Additional specifiers (`%u`, `%x`, `%o`, etc.) may be implemented later.
+# 🧪 Examples
 
-# 🧪 Exemples
-**Basic usage**
 ```c
 #include "main.h"
 
@@ -71,44 +74,68 @@ int main(void)
 # ✅ Tests performed
 
 The following test cases were manually verified:
-``` 
+```
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
+
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
+
     _printf("Negative:[%d]\n", -762534);
     printf("Negative:[%d]\n", -762534);
+
     _printf("Character:[%c]\n", 'H');
     printf("Character:[%c]\n", 'H');
+
     _printf("String:[%s]\n", "I am a string !");
     printf("String:[%s]\n", "I am a string !");
+
     len = _printf("Percent:[%%]\n");
     len2 = printf("Percent:[%%]\n");
+
     _printf("Len:[%d]\n", len);
     printf("Len:[%d]\n", len2);
+
+    _printf("Unsigned:[%u]\n", ui);
+    printf("Unsigned:[%u]\n", ui);
+
+    _printf("Unsigned octal:[%o]\n", ui);
+    printf("Unsigned octal:[%o]\n", ui);
+
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+
+    _printf("Address:[%p]\n", addr);
+    printf("Address:[%p]\n", addr);
 ```
 The output was compared with the standard `printf` to ensure correctness.
 
-Edge cases and additional specifiers (like `%u`, `%x`, etc.) will be tested in future updates.
-   
 # 📚 Manual Page
-A man page is included in the repository.
-To open it:
+A manual page is included:
 ```
 man ./man_3_printf
 ```
 # 🧩 Flowchart
-![Diagramme du Printf](image/Diagramme.png)
+![Printf Diagram](image/Diagramme.png)
 
 # 📁 Project Structure (optional section)
 ```
 ├── _printf.c
-├── handle_formats.c
-├── utils.c
-├── man_3_printf
+├── _putchar.c
 ├── main.h
+├── man_3_printf.3
+├── print_char.c
+├── print_hex_lower.c
+├── print_hex_upper.c
+├── print_int.c
+├── print_octal.c
+├── print_percent.c
+├── print_string.c
+├── write_int.c
+├── .gitignore
 └── README.md
 
 ```
 # 👥 Authors
-Georgia Boulnois, Gwendal Boisard and Fabien Cousin at Holberton, Actual Digital School.
+Georgia Boulnois - Gwendal Boisard - Fabien Cousin
+Holberton / Actual Digital School
