@@ -13,8 +13,8 @@ int _printf(const char *format, ...)
 
 	spec_t funcs[] = {
 		{'c', print_char}, {'s', print_string}, {'X', print_hex_upper},
-		{'d', print_int}, {'i', print_int}, {'o', print_octal},
-		{'%', print_percent}, {'x', print_hex_lower}, {'\0', NULL}
+		{'d', print_int}, {'i', print_int}, {'o', print_octal}, {%'b', print_pointer},
+		{'u', print_unsigned}, {'%', print_percent}, {'x', print_hex_lower}, {'\0', NULL}
 	};
 
 	if (!format)
