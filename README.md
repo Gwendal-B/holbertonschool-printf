@@ -113,7 +113,7 @@ The output was compared with the standard `printf` to ensure correctness.
 # 📚 Manual Page
 A manual page is included:
 ```
-man ./man_3_printf
+man ./man_3_printf.3
 ```
 # 🧩 Flowchart
 ![Printf Diagram](image/Diagramme.png)
