@@ -8,7 +8,7 @@
 *
 * @n: integer to print
 *
-* Return: length of
+* Return: length of the sent integer
 */
 
 int write_int(int n)
